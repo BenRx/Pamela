@@ -12,8 +12,7 @@ def create_container(path, user):
 
 def encrypt_container(user, path):
     syslog.syslog("PamScript encrypting container")
-    subprocess.Popen(["cryptsetup", "luksFormat", "-c", "aes", "-h", "sha256", path], stdin=subprocess.PIPE).communic\
-ate(user)
+    subprocess.Popen(["cryptsetup", "luksFormat", "-c", "aes", "-h", "sha256", path], stdin=subprocess.PIPE).communicate(user)
 
 def create_fs(user):
     if not os.path.exists("/home/" + user + "/secure_data-rw"):

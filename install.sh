@@ -28,6 +28,12 @@ if test $? -ne 0
   exit 1
 fi
 
+chmod 744 /lib/x86_64-linux-gnu/security/pam_script.py
+if test $? -ne 0
+  then echo "/!\\ Installation failed. Please make sure you are root /!\\"
+  exit 1
+fi
+
 echo "session optional  /lib/x86_64-linux-gnu/security/pam_python.so  /lib/x86_64-linux-gnu/security/pam_script.py" >> /etc/pam.d/common-auth
 if test $? -ne 0
   then echo "/!\\ Installation failed : Cannot append config line to /etc/pam.d/common-auth. Please make sure you are root /!\\"
