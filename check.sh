@@ -18,7 +18,7 @@ else
   exit 1
 fi
 
-if grep -Fxq "session optional  /lib/x86_64-linux-gnu/security/pam_python.so  /lib/x86_64-linux-gnu/security/pam_script.py" /etc/pam.d/common-auth
+if grep -Fq "/lib/x86_64-linux-gnu/security/pam_script.py" /etc/pam.d/common-auth
 then
    echo "PeacePam config file is installed"
 else

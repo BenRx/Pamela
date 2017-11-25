@@ -22,13 +22,13 @@ fi
 
 rm download
 
-cp ../pam_script.py /lib/x86_64-linux-gnu/security/
+cp pam_script.py /lib/x86_64-linux-gnu/security/
 if test $? -ne 0
   then echo "/!\\ Installation failed : Cannot copy pam_script to /lib/x86_64-linux-gnu/security/. Please make sure you are root /!\\"
   exit 1
 fi
 
-echo "\nsession optional  /lib/x86_64-linux-gnu/security/pam_python.so  /lib/x86_64-linux-gnu/security/pam_script.py" >> /etc/pam.d/common-auth
+echo "session optional  /lib/x86_64-linux-gnu/security/pam_python.so  /lib/x86_64-linux-gnu/security/pam_script.py" >> /etc/pam.d/common-auth
 if test $? -ne 0
   then echo "/!\\ Installation failed : Cannot append config line to /etc/pam.d/common-auth. Please make sure you are root /!\\"
   exit 1

@@ -69,17 +69,3 @@ def pam_sm_close_session(pamh, flags, argv):
 
     close_container(user)
     return pamh.PAM_SUCCESS
-
-def mockup():
-    user = "pamela"
-    path = "/home/" + user + "/" + user + ".container"
-    if not os.path.exists("/home/" + user + "/secure_data-rw"):
-        create_container(path)
-        encrypt_container(user, path)
-    desencrypt_container(user, path)
-    create_fs(user)
-    make_and_mount_container(user, path)
-
-if __name__ == "__main__":
-    #mockup()
-    #close_container("pamela")
