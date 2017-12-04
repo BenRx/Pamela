@@ -56,6 +56,10 @@ def pam_sm_open_session(pamh, flags, argv):
     return pamh.PAM_SUCCESS
 
 def pam_sm_close_session(pamh, flags, argv):
+    shlvl = os.getenv("SHLVL", 1)
+    if shlvl != 1:
+        syslog.syslog("Unable to logout")
+        return
     syslog.syslog("PamScript logout")
     try:
         user = pamh.get_user(None)
